@@ -66,3 +66,13 @@
     margin-right: 10px;
   }
 }
+
+@media (max-height: 500px) {
+  .letter {
+    max-height: 95vw;
+  }
+
+  .games {
+    margin: 20px 0;
+  }
+}
