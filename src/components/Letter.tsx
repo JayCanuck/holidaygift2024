@@ -28,6 +28,14 @@ interface LetterProps {
 }
 
 const Letter: React.FC<LetterProps> = ({ visible, onClose }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const position = useMemo(() => {
+    if (screenWidth >= 720) {
+      return [0, 3, -25] as const;
+    } else {
+      return [0, 2.5, -20] as const;
+    }
+  }, [screenWidth]);
   const { controls } = useThree<{ controls: CameraControls }>();
   const [idParam] = useQueryState('id');
   const id = useMemo(() => (idParam === '0' ? '00000000-0000-0000-0000-000000000000' : idParam), [idParam]);
@@ -49,8 +57,19 @@ const Letter: React.FC<LetterProps> = ({ visible, onClose }) => {
     controls.enabled = true;
   }, [controls]);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <Html transform position={[0, 2.5, -20]} style={{ userSelect: 'none' }}>
+    <Html transform position={position} style={{ userSelect: 'none' }}>
       <div
         className={styles.letter}
         style={{
