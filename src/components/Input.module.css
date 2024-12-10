@@ -1,0 +1,13 @@
+.code {
+	display: block;
+	border: 0;
+	background-color: transparent;
+	text-align: center;
+	color: black;
+	margin: 10px 0;
+	max-width: 100%;
+}
+
+.code:focus {
+	outline: none;
+}

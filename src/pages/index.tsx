@@ -1,9 +1,12 @@
+import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
 interface Game {
   name: string;
   code: string;
 }
+
+const DynamicViewer = dynamic(() => import('../components/Viewer'), { ssr: false });
 
 export default function Home() {
   return (
@@ -15,8 +18,7 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <div className='container'>
-        <h1>Hello World</h1>
-        <span>This is a test app</span>
+        <DynamicViewer />
       </div>
     </>
   );
