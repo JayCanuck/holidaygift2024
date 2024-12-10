@@ -5,6 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import CameraControls from 'camera-controls';
 import { useQueryState } from 'nuqs';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import useScreenWidth from '../hooks/use-screen-width';
 import Input from './Input';
 import styles from './Letter.module.css';
 
@@ -25,10 +26,11 @@ interface GiftReponse {
 interface LetterProps {
   visible: boolean;
   onClose: () => void;
+  isLow: boolean;
 }
 
-const Letter: React.FC<LetterProps> = ({ visible, onClose }) => {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+const Letter: React.FC<LetterProps> = ({ visible, onClose, isLow }) => {
+  const screenWidth = useScreenWidth();
   const position = useMemo(() => {
     if (screenWidth >= 720) {
       return [0, 3, -25] as const;
@@ -50,23 +52,12 @@ const Letter: React.FC<LetterProps> = ({ visible, onClose }) => {
   }, [onClose]);
 
   const disableControls = useCallback(() => {
-    controls.enabled = false;
-  }, [controls]);
+    if (!isLow) controls.enabled = false;
+  }, [controls, isLow]);
 
   const enableControls = useCallback(() => {
-    controls.enabled = true;
-  }, [controls]);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+    if (!isLow) controls.enabled = true;
+  }, [controls, isLow]);
 
   return (
     <Html transform position={position} style={{ userSelect: 'none' }}>

@@ -2,7 +2,11 @@ import { useAnimations, useGLTF } from '@react-three/drei';
 import { useLayoutEffect, useMemo } from 'react';
 import { Mesh } from 'three';
 
-const Snow: React.FC = () => {
+interface SnowProps {
+  isLow: boolean;
+}
+
+const Snow: React.FC<SnowProps> = ({ isLow }) => {
   const { scene: snowFull, animations: snowAnimations } = useGLTF('./falling-snow.glb');
   const snow = useMemo(() => {
     if (snowFull) {
@@ -14,7 +18,7 @@ const Snow: React.FC = () => {
     }
     return snowFull;
   }, [snowFull]);
-  const snow2 = useMemo(() => (snow ? snow.clone() : snow), [snow]);
+  const snow2 = useMemo(() => (snow && !isLow ? snow.clone() : undefined), [isLow, snow]);
   const { actions: snowActions } = useAnimations(snowAnimations, snow);
   const { actions: snowActions2 } = useAnimations(snowAnimations, snow2);
 
@@ -24,14 +28,16 @@ const Snow: React.FC = () => {
   }, [snowActions]);
 
   useLayoutEffect(() => {
-    snowActions2['Animation']!.timeScale = 0.3;
-    snowActions2['Animation']!.reset().fadeIn(0.5).play();
-  }, [snowActions2]);
+    if (snow2) {
+      snowActions2['Animation']!.timeScale = 0.3;
+      snowActions2['Animation']!.reset().fadeIn(0.5).play();
+    }
+  }, [snow2, snowActions2]);
 
   return (
     <>
       <primitive object={snow} position={[0, -2, -3]} />
-      <primitive object={snow2} position={[0, -2, 3]} />
+      {snow2 && <primitive object={snow2} position={[0, -2, 3]} />}
     </>
   );
 };

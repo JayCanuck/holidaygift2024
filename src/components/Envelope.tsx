@@ -31,7 +31,8 @@ const Envelope: React.FC<EnvelopeProps> = ({ open, onActivate, onOpened }) => {
       const handleAnimationFinish = (event: { action: AnimationAction }) => {
         if (event.action === actions['Armature|2_Opened Action_Armature']) {
           // Switch to the idle animation
-          actions['Armature|3_Opened Idle_Armature']!.reset().setLoop(LoopRepeat, Infinity).fadeIn(0.2).play();
+          actions['Armature|3_Opened Idle_Armature']!.reset().setLoop(LoopOnce, 1).play();
+          actions['Armature|3_Opened Idle_Armature']!.clampWhenFinished = true;
           mixer.removeEventListener('finished', handleAnimationFinish);
           onOpened();
         }
