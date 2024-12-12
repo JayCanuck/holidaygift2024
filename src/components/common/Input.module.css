@@ -13,3 +13,16 @@
 .code:focus {
 	outline: none;
 }
+
+
+@media (max-width: 480px) {
+  .code {
+    border: none;
+  }
+}
+
+@media (max-height: 500px) {
+  .code {
+    border: none;
+  }
+}
