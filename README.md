@@ -77,6 +77,6 @@ User gifts can then be accessed via unique special `https://webserver/?id=<userI
 
 GLB model ["falling snow loop"](https://sketchfab.com/3d-models/falling-snow-loop-a19b97d7e64548b998eaeb4d8477c24c), Copyright 2020 Elin Hohler under [CC Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)<br> 
 Music ["Holiday Homecoming" by Steve Oxen](https://www.fesliyanstudios.com/royalty-free-music/download/holiday-homecoming/3191)<br> 
-Sound effects by https://pixabay.com
+Paper crackle sound effect by https://pixabay.com
 
 Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).<br> 
