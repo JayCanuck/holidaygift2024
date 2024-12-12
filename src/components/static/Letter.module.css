@@ -1,0 +1,16 @@
+.wrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.letter {
+  position: relative;
+  overflow-y: auto;
+  display: inline-block;
+  width: 500px;
+  max-width: 90vw;
+  max-height: 95vh;
+  transition: opacity 0.5s ease-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}

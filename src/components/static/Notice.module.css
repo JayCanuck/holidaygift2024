@@ -1,0 +1,18 @@
+.wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  user-select: none;
+}
+
+.notice {
+  display: inline-block;
+  margin: auto;  
+  font-size: min(max(2vh, 2vw), 1rem);
+  padding: min(1vh, 0.5rem) min(2vw, 0.5rem);
+  border-top-left-radius: min(1vh, 0.5rem);
+  border-top-right-radius: min(1vh, 0.5rem);
+  background-color: rgba(255,255,255, 0.8);
+}

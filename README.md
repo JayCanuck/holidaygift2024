@@ -20,13 +20,63 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Assets
+## Environment Variable Setup
 
-This project expects certain dev-provided models available via env var values containing their static URL:
+This project is designed to use environment variables for assets and game keycode data.
 
 * `NEXT_PUBLIC_BACKGROUND` - An HDR image used for environment background. Any panorama image can be used for this.
-* `NEXT_PUBLIC_LETTER` - A jpg image used as background for 
+* `NEXT_PUBLIC_BACKGROUND_LOW` - An basic static image used for page background on low-end devices.
 * `NEXT_PUBLIC_ENVELOPE` - An animated envelope model (I used [this one](https://www.fab.com/listings/3e5bfd19-2c9b-45bc-b2b4-0443e9525c9c)). Any similar model with corresponding animations could be used.
+* `NEXT_PUBLIC_ENVELOPE_LOW` - A basic static image used for the envelope on low-end devices.
+* `NEXT_PUBLIC_LETTER` - A jpg image used to provide texture for the letter.
 
-This repo includes "falling snow loop" GLB model, copyright 2020 Elin Hohler under [CC Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)
-https://sketchfab.com/3d-models/falling-snow-loop-a19b97d7e64548b998eaeb4d8477c24c
+`NEXT_PUBLIC_PARCHMENT_SVG` is simply a string containing an SVG to be used as the parchment background for the gift messages.  It can be tailored to anything, though in my personal deployment I've use a papyrus scroll clipart SVG from [EmilTimplaru's Etsy shop](https://www.etsy.com/listing/955287962/papyrus-scroll-clipart-vector-design) as I liked that style.
+
+There's also backend-specific `MYSTERY` environment variable containing a stringified JSON value containing gift game codes and personalized metadata. This is the expected interface for the object:
+
+```ts
+interface MysteryObject {
+  [userID: string]: {
+    name?: string; // recipient name
+    message?: string; // customized gift message to override default top message
+    games: {
+      name: string; // game name, not currently used anywhere
+      code: string; // redeemable game code value
+    }[]; // array of the game details
+  }
+}
+```
+
+For example:
+
+```json
+{
+  "00000000-0000-0000-0000-000000000000":{
+    "name":"Mr. Debug",
+    "message":"Test debug message.",
+    "games":[
+      {"name":"Game 1","code":"00000-00000-00000"},
+      {"name":"Game 2","code":"00000-00000-00000"},
+      {"name":"Game 3","code":"00000-00000-00000"}
+    ]
+  },
+  "11111111-1111-1111-1111-111111111111":{
+    "games":[
+      {"name":"Game 1","code":"00000-00000-00000"},
+      {"name":"Game 2","code":"00000-00000-00000"},
+      {"name":"Game 3","code":"00000-00000-00000"}
+    ]
+  }
+}
+```
+Then stringify the JSON and store it as a `MYSTERY` environment variable.
+
+User gifts can then be accessed via unique special `https://webserver/?id=<userID>` URLs, while anyone visiting the webserver without the proper ID will just get a basic holiday greeting (no gift).
+
+# License
+
+GLB model ["falling snow loop"](https://sketchfab.com/3d-models/falling-snow-loop-a19b97d7e64548b998eaeb4d8477c24c), Copyright 2020 Elin Hohler under [CC Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)<br> 
+Music ["Holiday Homecoming" by Steve Oxen](https://www.fesliyanstudios.com/royalty-free-music/download/holiday-homecoming/3191)<br> 
+Sound effects by https://pixabay.com
+
+Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).<br> 

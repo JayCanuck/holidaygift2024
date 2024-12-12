@@ -6,7 +6,7 @@ interface Game {
   code: string;
 }
 
-const DynamicViewer = dynamic(() => import('../components/Viewer'), { ssr: false });
+const DynamicViewer = dynamic(() => import('../components/Gift'), { ssr: false });
 
 export default function Home() {
   return (

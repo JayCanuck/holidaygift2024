@@ -1,0 +1,16 @@
+
+.letter {
+  position: relative;
+  width: 400px;
+  /*height: 600px;*/
+  max-width: 70vw;
+  max-height: 70vh;
+  transition: opacity 0.5s ease-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-height: 500px) {
+  .letter {
+    max-height: 95vw;
+  }
+}

@@ -1,0 +1,36 @@
+.envelope {
+  max-width: 60vw;
+  max-height: 60vh;
+  object-fit: contain;
+  width: 300px;
+  height: 300px;
+  filter: drop-shadow(0px 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.animated {
+  animation: shake-loop 2s ease-in-out infinite;
+}
+
+@keyframes shake-loop {
+  0% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(-5deg);
+  }
+  30% {
+    transform: rotate(5deg);
+  }
+  45% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(0deg); /* Pause state */
+  }
+  100% {
+    transform: rotate(0deg); /* Pause state */
+  }
+}

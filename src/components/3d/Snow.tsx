@@ -2,11 +2,7 @@ import { useAnimations, useGLTF } from '@react-three/drei';
 import { useLayoutEffect, useMemo } from 'react';
 import { Mesh } from 'three';
 
-interface SnowProps {
-  isLow: boolean;
-}
-
-const Snow: React.FC<SnowProps> = ({ isLow }) => {
+const Snow: React.FC = () => {
   const { scene: snowFull, animations: snowAnimations } = useGLTF('./falling-snow.glb');
   const snow = useMemo(() => {
     if (snowFull) {
@@ -18,7 +14,7 @@ const Snow: React.FC<SnowProps> = ({ isLow }) => {
     }
     return snowFull;
   }, [snowFull]);
-  const snow2 = useMemo(() => (snow && !isLow ? snow.clone() : undefined), [isLow, snow]);
+  const snow2 = useMemo(() => (snow ? snow.clone() : undefined), [snow]);
   const { actions: snowActions } = useAnimations(snowAnimations, snow);
   const { actions: snowActions2 } = useAnimations(snowAnimations, snow2);
 
