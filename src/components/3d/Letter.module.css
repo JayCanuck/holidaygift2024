@@ -1,16 +1,18 @@
+/*  note: numbers are doubled as overall html is scaled 50% at threejs level */
 
 .letter {
   position: relative;
-  width: 400px;
-  /*height: 600px;*/
-  max-width: 70vw;
-  max-height: 70vh;
+  width: 800px;
+  /*height: 1200px;*/
+  max-width: 140vw;
+  max-height: 140vh;
   transition: opacity 0.5s ease-out;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+  font-size: 32px;
 }
 
 @media (max-height: 500px) {
   .letter {
-    max-height: 95vw;
+    max-height: 190vw;
   }
 }

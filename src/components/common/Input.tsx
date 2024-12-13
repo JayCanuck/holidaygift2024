@@ -1,12 +1,15 @@
-import { useCallback } from 'react';
-import styles from './Input.module.css';
+import { useCallback, useMemo } from 'react';
+import styles3D from '../3d/Input.module.css';
+import stylesStatic from '../static/Input.module.css';
 
 interface InputProps {
   value: string;
   onDown?: () => void;
   onOut?: () => void;
+  mode: '3d' | 'static';
 }
-const Input: React.FC<InputProps> = ({ value, onDown, onOut }) => {
+const Input: React.FC<InputProps> = ({ value, onDown, onOut, mode }) => {
+  const styles = useMemo(() => (mode === '3d' ? styles3D : stylesStatic), [mode]);
   const clickHandler = useCallback((ev: React.MouseEvent<HTMLInputElement>) => {
     const ele = ev.target as HTMLInputElement;
     // ele.select();

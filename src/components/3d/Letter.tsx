@@ -2,10 +2,13 @@ import { Html } from '@react-three/drei';
 import { useThree } from '@react-three/fiber';
 import CameraControls from 'camera-controls';
 import { useCallback, useMemo } from 'react';
+import { Vector3 } from 'three';
 import useGift from '../../hooks/use-gift';
 import useScreenWidth from '../../hooks/use-screen-width';
 import LetterContent from '../common/LetterContent';
 import styles from './Letter.module.css';
+
+const scale = new Vector3(0.5, 0.5, 0.5);
 
 interface LetterProps {
   visible: boolean;
@@ -32,14 +35,20 @@ const Letter: React.FC<LetterProps> = ({ visible }) => {
   }, [controls]);
 
   return (
-    <Html transform position={position} style={{ userSelect: 'none' }} pointerEvents={visible ? 'auto' : 'none'}>
+    <Html
+      transform
+      position={position}
+      style={{ userSelect: 'none' }}
+      pointerEvents={visible ? 'auto' : 'none'}
+      scale={scale}
+    >
       <div
         className={styles.letter}
         style={{
           opacity: visible ? '1' : '0'
         }}
       >
-        <LetterContent data={data} onInputDown={disableControls} onInputOut={enableControls} />
+        <LetterContent data={data} onInputDown={disableControls} onInputOut={enableControls} mode='3d' />
       </div>
     </Html>
   );

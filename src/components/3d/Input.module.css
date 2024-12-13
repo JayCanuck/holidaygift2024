@@ -1,0 +1,30 @@
+/* scaled by 0.5 */
+
+.code {
+	display: block;
+	border: 0;
+	background-color: transparent;
+	text-align: center;
+	color: black;
+	margin: 20px 0;
+	max-width: 100%;
+	/*background-color: white;*/
+	border: lightgray inset 2px;
+}
+
+.code:focus {
+	outline: none;
+}
+
+
+@media (max-width: 480px) {
+  .code {
+    border: none;
+  }
+}
+
+@media (max-height: 500px) {
+  .code {
+    border: none;
+  }
+}

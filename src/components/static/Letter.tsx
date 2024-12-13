@@ -12,7 +12,7 @@ const Letter: React.FC<LetterProps> = ({ visible }) => {
   return (
     <Center className={styles.wrapper} style={{ zIndex: visible ? '1' : '-1' }}>
       <div className={styles.letter} style={{ opacity: visible ? '1' : '0' }}>
-        <LetterContent data={data} />
+        <LetterContent data={data} mode='static' />
       </div>
     </Center>
   );

@@ -1,0 +1,58 @@
+.content {
+	user-select: none;
+	padding: 1em;
+	font-family: var(--font-amaranth);
+	background-size: 100% 100%; 
+  background-repeat: no-repeat; 
+}
+
+.recipient {
+	font-size: 2em;
+  padding-bottom: 40px;
+}
+
+.message {
+	font-size: 1em;
+	line-height: 1.1em;
+}
+
+.center {
+	text-align: center;
+}
+
+.games {
+	display: inline-block;
+	background-color: rgba(50, 50, 50, 0.2);
+	border-radius: 20px;
+	font-size: 1.2em;
+	padding: 40px;
+	font-family: var(--font-mono);
+	white-space: pre;
+	margin: 80px 0;
+  max-width: 100%;
+}
+
+.signature {
+	font-style: italic;
+	font-size: 1.5em;
+	text-align: right;
+	margin-right: 100px;
+  margin-top: 20px;
+}
+
+@media (max-width: 480px) {
+  .games {
+    padding: 0;
+    margin: 40px 0;
+  }
+
+  .signature {
+    margin-right: 20px;
+  }
+}
+
+@media (max-height: 500px) {
+  .games {
+    margin: 40px 0;
+  }
+}
