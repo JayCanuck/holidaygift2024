@@ -7,10 +7,11 @@ import StaticScene from './static/StaticScene';
 
 const Viewer: React.FC = () => {
   const [lowParam] = useQueryState('low', parseAsBoolean);
+  const [highParam] = useQueryState('high', parseAsBoolean);
   const gpuTier = useDetectGPU();
   const isLow = useMemo(
-    () => Boolean(lowParam || gpuTier.tier <= 1 || gpuTier.isMobile),
-    [gpuTier.isMobile, gpuTier.tier, lowParam]
+    () => Boolean((lowParam || gpuTier.tier <= 1 || gpuTier.isMobile) && !highParam),
+    [gpuTier.isMobile, gpuTier.tier, highParam, lowParam]
   );
   console.log(gpuTier);
 
