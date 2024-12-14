@@ -1,9 +1,20 @@
+/*
+	All metrics are scaled double size for 3D, which is set overally to scale=(0.5, 0.5, 0.5)
+	This allows for higher density rendering of the 3D translations of the Html
+*/
+
 .content {
 	user-select: none;
 	padding: 1em;
 	font-family: var(--font-amaranth);
 	background-size: 100% 100%; 
   background-repeat: no-repeat; 
+}
+
+.simple {
+	text-align: center;
+	font-size: 56px;
+	padding: 250px 0;
 }
 
 .recipient {

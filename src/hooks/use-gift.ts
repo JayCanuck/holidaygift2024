@@ -10,6 +10,7 @@ export interface Game {
 export interface GiftReponse {
   name?: string;
   message?: string;
+  footer?: string;
   games: Game[];
 }
 
@@ -19,7 +20,7 @@ const useGift = () => {
   const { data } = useQuery({
     queryKey: [],
     queryFn: () => fetch(`/api/games?id=${id || ''}`).then(res => res.json() as Promise<GiftReponse>),
-    initialData: { games: [] },
+    initialData: null,
     enabled: Boolean(id)
   });
 

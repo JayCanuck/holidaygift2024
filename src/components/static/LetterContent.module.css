@@ -6,6 +6,12 @@
   background-repeat: no-repeat; 
 }
 
+.simple {
+	text-align: center;
+	font-size: 28px;
+	padding: 125px 0;
+}
+
 .recipient {
 	font-size: 2em;
   padding-bottom: 20px;
