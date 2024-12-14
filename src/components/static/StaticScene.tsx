@@ -27,7 +27,7 @@ const StaticScene: React.FC<StaticSceneProps> = () => {
         <Envelope open={open} onOpened={openHandler} />
       </Center>
       <Letter visible={open} />
-      <Notice />
+      {/*<Notice />*/}
       <PaperCrackle ref={crackle} />
     </div>
   );
