@@ -13,7 +13,7 @@ const Viewer: React.FC = () => {
     () => Boolean((lowParam || gpuTier.tier <= 1 || gpuTier.isMobile) && !highParam),
     [gpuTier.isMobile, gpuTier.tier, highParam, lowParam]
   );
-  console.log(gpuTier);
+  console.log('GPU', gpuTier);
 
   return (
     <>
