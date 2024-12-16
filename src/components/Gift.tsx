@@ -1,6 +1,6 @@
 import { useDetectGPU } from '@react-three/drei';
 import { parseAsBoolean, useQueryState } from 'nuqs';
-import { Suspense, useMemo } from 'react';
+import { Suspense, useEffect, useMemo } from 'react';
 import Scene from './3d/Scene';
 import Music from './common/Music';
 import StaticScene from './static/StaticScene';

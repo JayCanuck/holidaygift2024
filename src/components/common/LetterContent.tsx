@@ -37,7 +37,14 @@ const LetterContent: React.FC<LetterContentProps> = ({ data, onInputDown, onInpu
               <div className={styles.center}>
                 <div className={styles.games}>
                   {data.games.map((game, i) => (
-                    <Input key={`game-${i}`} value={game.code} onDown={onInputDown} onOut={onInputOut} mode={mode} />
+                    <Input
+                      key={`game-${i}`}
+                      value={game.code}
+                      onDown={onInputDown}
+                      onOut={onInputOut}
+                      mode={mode}
+                      data-number={i + 1}
+                    />
                   ))}
                 </div>
               </div>

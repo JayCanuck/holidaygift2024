@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { Amaranth } from 'next/font/google';
 import 'normalize.css';
 import './index.css';
+import { SnackbarProvider } from 'notistack';
 import { NuqsAdapter } from 'nuqs/adapters/next/pages';
 
 const queryClient = new QueryClient();
@@ -16,11 +17,13 @@ const amaranth = Amaranth({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NuqsAdapter>
-      <QueryClientProvider client={queryClient}>
-        <main className={amaranth.variable}>
-          <Component {...pageProps} />
-        </main>
-      </QueryClientProvider>
+      <SnackbarProvider>
+        <QueryClientProvider client={queryClient}>
+          <main className={amaranth.variable}>
+            <Component {...pageProps} />
+          </main>
+        </QueryClientProvider>
+      </SnackbarProvider>
     </NuqsAdapter>
   );
 }

@@ -17,6 +17,7 @@
     "camera-controls": "^2.9.0",
     "next": "15.0.4",
     "normalize.css": "^8.0.1",
+    "notistack": "^3.0.1",
     "nuqs": "^2.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
