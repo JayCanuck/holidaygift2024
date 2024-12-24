@@ -17,7 +17,7 @@ const StaticScene: React.FC<StaticSceneProps> = () => {
     setTimeout(() => {
       setOpen(true);
     }, 500);
-    crackle.current?.play();
+    if (!crackle.current?.muted) crackle.current?.play();
   }, [setOpen]);
 
   return (

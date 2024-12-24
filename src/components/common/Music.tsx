@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { SyntheticEvent, useCallback, useEffect, useRef, useState } from 'react';
 import MuteButton from './MuteButton';
 
 const Music: React.FC = () => {
@@ -6,13 +6,13 @@ const Music: React.FC = () => {
   const [muted, setMuted] = useState(false);
 
   const handleMute = useCallback((value: boolean) => {
-    setMuted(value);
-
     window.localStorage.setItem('mute', JSON.stringify(value));
 
     document.querySelectorAll('audio').forEach(ele => {
       ele.muted = value;
     });
+
+    setMuted(value);
   }, []);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const Music: React.FC = () => {
     }
 
     const handleClick = () => {
-      if (ref.current) {
+      if (ref.current && !ref.current?.muted) {
         ref.current.play();
         ref.current.volume = 0.8;
       }
@@ -45,9 +45,16 @@ const Music: React.FC = () => {
     };
   }, []);
 
+  const handleVolumeChange = (ev: SyntheticEvent<HTMLAudioElement>) => {
+    if (!ev.currentTarget.muted && ev.currentTarget.paused) {
+      ev.currentTarget.play();
+      ev.currentTarget.volume = 0.8;
+    }
+  };
+
   return (
     <>
-      <audio ref={ref} preload='auto' loop src='/holiday-homecoming.mp3' />
+      <audio ref={ref} preload='auto' loop src='/holiday-homecoming.mp3' onVolumeChange={handleVolumeChange} />
       <MuteButton muted={muted} onChange={handleMute} />
     </>
   );

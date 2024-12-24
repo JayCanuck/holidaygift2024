@@ -14,7 +14,7 @@ const Scene: React.FC = () => {
   const openEnvelopeHandler = useCallback(() => {
     setEnvelopeOpen(true);
     setTimeout(() => {
-      crackle.current?.play();
+      if (!crackle.current?.muted) crackle.current?.play();
     }, 500);
   }, [setEnvelopeOpen]);
 
