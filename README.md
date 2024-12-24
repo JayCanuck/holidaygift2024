@@ -30,8 +30,6 @@ This project is designed to use environment variables for assets and game keycod
 * `NEXT_PUBLIC_ENVELOPE_LOW` - A basic static image used for the envelope on low-end devices.
 * `NEXT_PUBLIC_LETTER` - A jpg image used to provide texture for the letter.
 
-`NEXT_PUBLIC_PARCHMENT_SVG` is simply a string containing an SVG to be used as the parchment background for the gift messages.  It can be tailored to anything, though in my personal deployment I've use a papyrus scroll clipart SVG from [EmilTimplaru's Etsy shop](https://www.etsy.com/listing/955287962/papyrus-scroll-clipart-vector-design) as I liked that style.
-
 There's also backend-specific `MYSTERY` environment variable containing a stringified JSON value containing gift game codes and personalized metadata. This is the expected interface for the object:
 
 ```ts
@@ -39,6 +37,7 @@ interface MysteryObject {
   [userID: string]: {
     name?: string; // recipient name
     message?: string; // customized gift message to override default top message
+    footer?: string; // footer message after game codes, right before signature
     games: {
       name: string; // game name, not currently used anywhere
       code: string; // redeemable game code value
@@ -54,6 +53,7 @@ For example:
   "00000000-0000-0000-0000-000000000000":{
     "name":"Mr. Debug",
     "message":"Test debug message.",
+    "footer": "Have a great holidays!",
     "games":[
       {"name":"Game 1","code":"00000-00000-00000"},
       {"name":"Game 2","code":"00000-00000-00000"},
@@ -77,6 +77,6 @@ User gifts can then be accessed via unique special `https://webserver/?id=<userI
 
 GLB model ["falling snow loop"](https://sketchfab.com/3d-models/falling-snow-loop-a19b97d7e64548b998eaeb4d8477c24c), Copyright 2020 Elin Hohler under [CC Attribution 4.0 license](https://creativecommons.org/licenses/by/4.0/)<br> 
 Music ["Holiday Homecoming" by Steve Oxen](https://www.fesliyanstudios.com/royalty-free-music/download/holiday-homecoming/3191)<br> 
-Paper crackle sound effect by https://pixabay.com
+Paper crackle sound effect by [https://pixabay.com](https://pixabay.com)
 
-Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).<br> 
+Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).
