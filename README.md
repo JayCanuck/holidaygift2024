@@ -79,4 +79,4 @@ GLB model ["falling snow loop"](https://sketchfab.com/3d-models/falling-snow-loo
 Music ["Holiday Homecoming" by Steve Oxen](https://www.fesliyanstudios.com/royalty-free-music/download/holiday-homecoming/3191)<br> 
 Paper crackle sound effect by [https://pixabay.com](https://pixabay.com)
 
-Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt)
+Holiday Gift 2024 webapp is Copyright 2024, Jason Robitaille under the [Apache-2.0 license](https://www.apache.org/licenses/LICENSE-2.0.txt).
